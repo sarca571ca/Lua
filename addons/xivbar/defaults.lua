@@ -60,6 +60,16 @@ defaults.Texts.Stroke.Alpha = 200
 defaults.Texts.Stroke.Red = 50
 defaults.Texts.Stroke.Green = 50
 defaults.Texts.Stroke.Blue = 50
+--
+defaults.Texts.CautionColor = {}
+defaults.Texts.CautionColor.Red = 255
+defaults.Texts.CautionColor.Green = 200
+defaults.Texts.CautionColor.Blue = 20
+defaults.Texts.WarningColor = {}
+defaults.Texts.WarningColor.Red = 255
+defaults.Texts.WarningColor.Green = 20
+defaults.Texts.WarningColor.Blue = 20
+--
 defaults.Texts.FullTpColor = {}
 defaults.Texts.FullTpColor.Red = 80
 defaults.Texts.FullTpColor.Green = 180

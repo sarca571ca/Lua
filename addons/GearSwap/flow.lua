@@ -1,4 +1,4 @@
---Copyright (c) 2013~2016, Byrthnoth
+--Copyr,ght (c) 2013~2016, Byrthnoth
 --All rights reserved.
 
 --Redistribution and use in source and binary forms, with or without
@@ -24,8 +24,22 @@
 --(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 --SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+-----------------------------------------------------------------------------------
+-- Name: macro_use
+-----------------------------------------------------------------------------------
+function macro_use(typeParam,...)
+  local results
 
-
+  if type(typeParam) == 'function' then
+    results = { pcall(typeParam,...) }
+      if not table.remove(results,1) then error('\nUser Event Error: '..results[1]) end
+  else
+    user_pcall(typeParam,...)
+  end
+    if type(typeParam) == 'function' then
+      return unpack(results)
+  end
+end
 -----------------------------------------------------------------------------------
 --Name: equip_sets(swap_type,ts,val1,val2)
 --Desc: General purpose equipment pipeline / user function caller. 
@@ -440,3 +454,28 @@ function send_action(ts)
     command_registry[ts].midaction = true
     equip_sets('midcast',ts,command_registry[ts].spell)
 end
+
+-- function macro_command(cmdParams)
+--   local j = cmdParams[1]:lower()
+--   local ab = cmdParams[2]:lower()
+--   windower.add_to_chat(220, "Job: "..j.." Ability: "..ab)
+--
+  -- if j == job[j] then
+  --   if j == 'brd' then ja_brd(ab) elseif j == 'bst' then ja_bst(ab) elseif j == 'blm' then ja_blm(ab) elseif j == 'blu' then ja_blu(ab) 
+  --   elseif j == 'cor' then ja_cor(ab) elseif j == 'dnc' then ja_dnc(ab) elseif j == 'drk' then ja_drk(ab) elseif j == 'drg' then ja_drg(ab) 
+  --   elseif j == 'geo' then ja_geo(ab) elseif j == 'mnk' then ja_mnk(ab) elseif j == 'nin' then ja_nin(ab) elseif j == 'pld' then ja_pld(ab)     
+  --   elseif j == 'pup' then ja_pup(ab) elseif j == 'rng' then ja_rng(ab) elseif j == 'rdm' then ja_rdm(ab) elseif j == 'run' then ja_run(ab) 
+  --   elseif j == 'sam' then ja_sam(ab) elseif j == 'sch' then ja_sch(ab) elseif j == 'smn' then ja_smn(ab) elseif j == 'thf' then ja_thf(ab) 
+  --   elseif j == 'war' then ja_war(ab) elseif j == 'whm' then ja_whm(ab) end
+  -- else print(j.." is not a job!") end
+-- end
+
+   -- if type(swap_type) == 'function' then
+   --      results = { pcall(swap_type,...) }
+   --      if not table.remove(results,1) then error('\nUser Event Error: '..results[1]) end
+   --  elseif swap_type == 'equip_command' then
+   --      equip(val1)
+   --  else
+   --      user_pcall(swap_type,...)
+   --  end
+

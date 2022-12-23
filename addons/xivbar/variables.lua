@@ -40,3 +40,4 @@ control.mp_bar_width = 0
 control.tp_bar_width = 0
 
 return control
+

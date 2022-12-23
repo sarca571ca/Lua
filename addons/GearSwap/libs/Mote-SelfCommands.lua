@@ -3,6 +3,15 @@
 -- Only handles certain specific states that we've defined, though it
 -- allows the user to hook into the cycle command.
 -------------------------------------------------------------------------------------------------------------------
+function macro_command(commandArgs)
+  local commandArgs = commandArgs
+  if type(commandArg) == 'string' then
+    commandArgs = T(commandArgs:split(''))
+      if #commandArgs == 0 then
+        return
+      end
+  end
+end
 
 -- Routing function for general known self_commands.  Mappings are at the bottom of the file.
 -- Handles splitting the provided command line up into discrete words, for the other functions to use.

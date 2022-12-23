@@ -71,50 +71,58 @@ function initialize()
 end
 
 -- update a bar
+-- bar - ,text - text value shown?,width - bar width based on value?,current - actual white value,pp - bar percentage,flag - 1-HP 2-MP 3-TP
 function update_bar(bar, text, width, current, pp, flag)
-    local old_width = width
-    local new_width = math.floor((pp / 100) * theme_options.bar_width)
+  local old_width = width
+  local new_width = math.floor((pp / 100) * theme_options.bar_width)
 
-    if new_width ~= nil and new_width >= 0 then
-        if old_width == new_width then
-            if new_width == 0 then
-                bar:hide()
-            end
+  if new_width ~= nil and new_width >= 0 then
+      if old_width == new_width then
+          if new_width == 0 then
+              bar:hide()
+          end
 
-            if flag == 1 then
-                xivbar.hp_update = false
-            elseif flag == 2 then
-                xivbar.update_mp = false
-            elseif flag == 3 then
-                xivbar.update_tp = false
-            end
-        else
-            local x = old_width
+          if flag == 1 then
+              xivbar.hp_update = false
+          elseif flag == 2 then
+              xivbar.update_mp = false
+          elseif flag == 3 then
+              xivbar.update_tp = false
+          end
+      else
+          local x = old_width
 
-            if old_width < new_width then
-                x = old_width + math.ceil((new_width - old_width) * 0.1)
+          if old_width < new_width then
+              x = old_width + math.ceil((new_width - old_width) * 0.1)
 
-                x = math.min(x, theme_options.bar_width)
-            elseif old_width > new_width then
-                x = old_width - math.ceil((old_width - new_width) * 0.1)
+              x = math.min(x, theme_options.bar_width)
+          elseif old_width > new_width then
+              x = old_width - math.ceil((old_width - new_width) * 0.1)
 
-                x = math.max(x, 0)
-            end
+              x = math.max(x, 0)
+          end
 
-            if flag == 1 then
-                xivbar.hp_bar_width = x
-            elseif flag == 2 then
-                xivbar.mp_bar_width = x
-            elseif flag == 3 then
-                xivbar.tp_bar_width = x
-            end
+          if flag == 1 then
+              xivbar.hp_bar_width = x
+          elseif flag == 2 then
+              xivbar.mp_bar_width = x
+          elseif flag == 3 then
+              xivbar.tp_bar_width = x
+          end
 
-            bar:size(x, theme_options.total_height)
-            bar:show()
-        end
-    end
-
-    if flag == 3 and current >= 1000 then
+          bar:size(x, theme_options.total_height)
+          bar:show()
+      end
+  end
+  -- Add's Text color change based on bar percentage, hopefully.
+  -- Need to set the defaults and add to the settings.xml initialization
+  if flag == 2 and pp <= 70 then
+    text:color(theme_options.caution_color_red, theme_options.caution_color_green, theme_options.caution_color_blue)
+  elseif flag == 2 and pp <= 30 then
+    text:color(theme_options.warning_color_red, theme_options.warning_color_green, theme_options.warning_color_blue)
+  end
+    
+  if flag == 3 and current >= 1000 then
         text:color(theme_options.full_tp_color_red, theme_options.full_tp_color_green, theme_options.full_tp_color_blue)
         if theme_options.dim_tp_bar then bar:alpha(255) end
     else
@@ -133,15 +141,15 @@ end
 
 -- show the addon
 function show()
-    if xivbar.initialized == false then
-        initialize()
-    end
+  if xivbar.initialized == false then
+      initialize()
+  end
 
-    ui:show()
-    xivbar.ready = true
-    xivbar.update_hp = true
-    xivbar.update_mp = true
-    xivbar.update_tp = true
+  ui:show()
+  xivbar.ready = true
+  xivbar.update_hp = true
+  xivbar.update_mp = true
+  xivbar.update_tp = true
 end
 
 

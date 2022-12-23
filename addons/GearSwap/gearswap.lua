@@ -151,12 +151,14 @@ windower.register_event('addon command',function (...)
     windower.debug('addon command')
     logit('\n\n'..tostring(os.clock)..table.concat({...},' '))
     local splitup = {...}
-    if not splitup[1] then return end -- handles //gs
+    local jb = splitup[2]
+    local ab = splitup[3]
     
+    if not splitup[1] then return end -- handles //gs
     for i,v in pairs(splitup) do splitup[i] = windower.from_shift_jis(windower.convert_auto_trans(v)) end
 
-    local cmd = table.remove(splitup,1):lower()
-    
+  local cmd = table.remove(splitup,1):lower()
+
     if cmd == 'c' then
         if gearswap_disabled then return end
         if splitup[1] then
@@ -165,6 +167,23 @@ windower.register_event('addon command',function (...)
         else
             msg.addon_msg(123,'No self command passed.')
         end
+---------------------------------------------------------------------------------------------------------------------
+-- Under Construction------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------
+
+    elseif cmd == 'm' then
+      windower.add_to_chat(220, 'That Worked!')
+      if gearswap_disabled then return end
+      if splitup[1] then
+        refresh_globals()
+        macro_use('macro_command',splitup)
+      else
+        msg.addon_msg(123, 'No macro commands passed.')
+      end
+---------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------
+
     elseif cmd == 'equip' then
         if gearswap_disabled then return end
         local key_list = parse_set_to_keys(splitup)

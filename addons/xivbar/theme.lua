@@ -52,6 +52,14 @@ theme.apply = function (settings)
     options.font_stroke_color_red = settings.Texts.Stroke.Red
     options.font_stroke_color_green = settings.Texts.Stroke.Green
     options.font_stroke_color_blue = settings.Texts.Stroke.Blue
+    -- 
+    options.caution_color_red = settings.Texts.CautionColor.Red
+    options.caution_color_green = settings.Texts.CautionColor.Green
+    options.caution_color_blue = settings.Texts.CautionColor.Blue
+    options.warning_color_red = settings.Texts.WarningColor.Red
+    options.warning_color_green = settings.Texts.WarningColor.Green
+    options.warning_color_blue = settings.Texts.WarningColor.Blue
+    --
     options.full_tp_color_red = settings.Texts.FullTpColor.Red
     options.full_tp_color_green = settings.Texts.FullTpColor.Green
     options.full_tp_color_blue = settings.Texts.FullTpColor.Blue
