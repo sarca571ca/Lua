@@ -116,19 +116,41 @@ function update_bar(bar, text, width, current, pp, flag)
   end
   -- Add's Text color change based on bar percentage, hopefully.
   -- Need to set the defaults and add to the settings.xml initialization
-  if flag == 2 and pp <= 70 then
+
+  if flag == 1 and pp > 70 then
+    text:color(theme_options.font_color_red, theme_options.font_color_green, theme_options.font_color_blue)
+    elseif flag == 1 and pp <= 70 and pp > 30 then
+    text:color(theme_options.caution_color_red, theme_options.caution_color_green, theme_options.caution_color_blue)
+  elseif flag == 1 and pp <= 30 then
+    text:color(theme_options.warning_color_red, theme_options.warning_color_green, theme_options.warning_color_blue)
+  end
+
+  if flag == 2 and pp > 70 then
+    text:color(theme_options.font_color_red, theme_options.font_color_green, theme_options.font_color_blue)
+  elseif flag == 2 and pp <= 70 and pp > 30 then
     text:color(theme_options.caution_color_red, theme_options.caution_color_green, theme_options.caution_color_blue)
   elseif flag == 2 and pp <= 30 then
     text:color(theme_options.warning_color_red, theme_options.warning_color_green, theme_options.warning_color_blue)
   end
-    
-  if flag == 3 and current >= 1000 then
-        text:color(theme_options.full_tp_color_red, theme_options.full_tp_color_green, theme_options.full_tp_color_blue)
-        if theme_options.dim_tp_bar then bar:alpha(255) end
-    else
-        text:color(theme_options.font_color_red, theme_options.font_color_green, theme_options.font_color_blue)
-        if theme_options.dim_tp_bar then bar:alpha(180) end
-    end
+
+  if flag == 3 and current < 1000 then
+    text:color(theme_options.font_color_red, theme_options.font_color_green, theme_options.font_color_blue)
+  elseif flag == 3 and current >= 1000 and current < 2000 then
+    text:color(theme_options.full_tp_color_red, theme_options.full_tp_color_green, theme_options.full_tp_color_blue)
+  elseif flag == 3 and current >= 2000 and current < 3000 then
+    text:color(theme_options.caution_color_red, theme_options.caution_color_green, theme_options.caution_color_blue)
+  elseif flag == 3 and current == 3000 then
+    text:color(theme_options.warning_color_red, theme_options.warning_color_green, theme_options.warning_color_blue)
+  end
+
+
+  -- if flag == 3 and current >= 1000 then
+  --       text:color(theme_options.full_tp_color_red, theme_options.full_tp_color_green, theme_options.full_tp_color_blue)
+  --       if theme_options.dim_tp_bar then bar:alpha(255) end
+  --   else
+  --       text:color(theme_options.font_color_red, theme_options.font_color_green, theme_options.font_color_blue)
+  --       if theme_options.dim_tp_bar then bar:alpha(180) end
+  --   end
 
     text:text(tostring(current))
 end
