@@ -14,8 +14,8 @@
             </move>
         </macroBar>
         <pos>
-            <x>1100</x>
-            <y>1100</y>
+            <x>1550</x>
+            <y>1000</y>
         </pos>
         <subTargetBar>
             <height>6</height>
@@ -27,7 +27,7 @@
         </targetBar>
         <text>
             <bold>true</bold>
-            <font>SpaceMono NF</font>
+            <font>Cantarell</font>
             <fonts>
                 <1>DejaVu Sans Mono</1>
                 <2>Carlito</2>

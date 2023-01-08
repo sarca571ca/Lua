@@ -28,7 +28,7 @@ render_subtarget_bar = function(...)
         old_subtarget = subtarget
         subtarget = windower.ffxi.get_mob_by_target('st')
         if subtarget ~= nil and target ~= nil then
-            pointer:show()
+            -- pointer:show()
             stbg_cap_l:show()
             stbg_cap_r:show()
             stbg_body:show()
