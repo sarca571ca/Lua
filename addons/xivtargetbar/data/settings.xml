@@ -18,23 +18,19 @@
             <y>1000</y>
         </pos>
         <subTargetBar>
-            <height>6</height>
+            <height>4</height>
             <width>200</width>
         </subTargetBar>
         <targetBar>
-            <height>12</height>
+            <height>4</height>
             <width>400</width>
         </targetBar>
         <text>
             <bold>true</bold>
-            <font>Cantarell</font>
-            <fonts>
-                <1>DejaVu Sans Mono</1>
-                <2>Carlito</2>
-            </fonts>
-            <italic>true</italic>
+            <font>SpaceMono NF</font>
+            <italic>false</italic>
             <padding>16</padding>
-            <showPercentage>false</showPercentage>
+            <showPercentage>True</showPercentage>
             <size>10</size>
         </text>
         <useRoundCap>true</useRoundCap>
