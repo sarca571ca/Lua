@@ -36,21 +36,9 @@ local packets = require('packets')
 local res = require('resources')
 require('logger')
 require('strings')
-<<<<<<< HEAD
 -- Requires within the XIVParty directory
 utils = require('utils')
 img = require('img')
-=======
-require('lists')
-require('tables')
-
--- imports
-local const = require('const')
-local utils = require('utils')
-local uiView = require('uiView')
-local model = require('model').new()
-local settings = require('settings')
->>>>>>> d9c4c58d165047775e413675ae36c7dec32474d4
 
 -- local and global variables
 local isInitialized = false
@@ -71,7 +59,6 @@ RefCountText = 0
 
 -- initialization / events
 
-<<<<<<< HEAD
 windower.register_event('load', function()		-- First Function to run
 	if windower.ffxi.get_info().logged_in then	-- If logged in then
 		settings:init(model)					-- initialiaze the model from settings (md:init())
@@ -87,24 +74,6 @@ windower.register_event('login', function()		-- Repeats everythin above, i'm not
 		settings:load()
 		loadLayout(settings.layout)
 		isLoaded = true
-=======
-windower.register_event('load', function()
-	-- settings must only be loaded when logged in, as they are separate for every character
-	if windower.ffxi.get_info().logged_in then
-		Settings = settings.new(model)
-		Settings:load()
-		view = uiView.new(model) -- depends on settings, always create view after loading settings
-		isInitialized = true
-	end
-end)
-
-windower.register_event('login', function()
-	if not isInitialized then
-		Settings = settings.new(model)
-		Settings:load()
-		view = uiView.new(model)
-		isInitialized = true
->>>>>>> d9c4c58d165047775e413675ae36c7dec32474d4
 	end
 end)
 
