@@ -187,6 +187,10 @@ local function setup_ui()
     destroy()
     
     bg_image = images.new(bg_image_settings)
+    bg_image:path(windower.addon_path..'assets/test.png')
+    -- bg_image:repeat_xy(1, 1)
+    bg_image:draggable(false)
+    -- bg_image:fit(true)
     bg_image:show()
 
     for key, slot in pairs(equipment_data) do
@@ -627,13 +631,13 @@ end)
 function refresh_ui_settings()
     --Image and text settings
     bg_image_settings = {
-        alpha = settings.bg.alpha,
-        color = {
-            alpha = settings.bg.alpha,
-            red = settings.bg.red,
-            green = settings.bg.green,
-            blue = settings.bg.blue,
-        }, 
+        -- alpha = settings.bg.alpha,
+        -- color = {
+        --     alpha = settings.bg.alpha,
+        --     red = settings.bg.red,
+        --     green = settings.bg.green,
+        --     blue = settings.bg.blue,
+        -- }, 
         pos = {
             x = settings.pos.x,
             y = settings.pos.y,
